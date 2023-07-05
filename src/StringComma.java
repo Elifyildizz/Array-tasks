@@ -3,7 +3,7 @@ import java.util.*;
 public class StringComma {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("How many sentence will you write:  ");
+        System.out.println("How many sentence will you write: ");
         int count = scanner.nextInt();
         scanner.nextLine();
         String[] words = new String[count];
