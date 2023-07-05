@@ -18,8 +18,5 @@ public class StringComma {
                 System.out.print(", ");
             }
         }
-        System.out.println();
-        System.out.println("Array length: " + words.length);
-
     }
 }
