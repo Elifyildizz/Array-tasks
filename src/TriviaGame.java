@@ -16,13 +16,17 @@ public class TriviaGame {
         questionsAnswers.put("What is the most common element in the universe?\nAnswer:", "carbon");
         questionsAnswers.put("Who invented telephone?\nAnswer:", "graham bell");
         questionsAnswers.put("What is the unit of electric?\nAnswer:", "watt");
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
         for (String i : questionsAnswers.keySet()) {
             System.out.println(i);
             String answers = scanner.next().toLowerCase();
             answerList.add(answers);
         }
 
+<<<<<<< HEAD
         int point = questionsAnswers.entrySet().stream()
                 .mapToInt(entry -> answerList.contains(entry.getValue()) && answerList.contains(entry.getKey()) ? 10 : -5)
                 .sum();
@@ -35,6 +39,11 @@ public class TriviaGame {
         }
          */
         point = Math.max(point, 0);
+=======
+        int point = (int) questionsAnswers.values().stream()
+                .mapToInt(value -> answerList.contains(value) ? 10 : 5)
+                .sum();
+>>>>>>> origin/main
         System.out.println("Your point is: " + point + " Congrats!");
     }
 }
