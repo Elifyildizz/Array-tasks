@@ -34,5 +34,7 @@ public class TriviaGame {
             System.out.println("Congrats! Your score is: "+point);
         }
          */
+        point = Math.max(point,0);
+        System.out.println("Congrats! Your score is: "+point);
     }
 }
