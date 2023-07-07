@@ -19,11 +19,12 @@ public class TriviaGame {
 
         for (String i : questionsAnswers.keySet()) {
             System.out.println(i);
-            String answers = scanner.next().toLowerCase();
+            String answers = scanner.nextLine().toLowerCase();
             answerList.add(answers);
         }
 
-        int point = questionsAnswers.entrySet().stream()
+        int point = 0;
+        point = questionsAnswers.entrySet().stream()
                 .mapToInt(entry -> answerList.contains(entry.getValue()) && answerList.contains(entry.getKey()) ? 10 : -5)
                 .sum();
         /*
