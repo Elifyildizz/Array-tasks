@@ -2,10 +2,10 @@ import java.util.*;
 
 public class TriviaGame {
     public static void main(String[] args) {
-        System.out.println("Welcome to our trivia.\nYou have to answer 10 multiple question.\nIf you answer correct you will get 10 points for each question\nIf you answer wrong you will lose 5 points for each question.");
+        System.out.println("Welcome to our trivia.\nYou have to answer 10 multiple question.\nIf you answer correctly, you will get 10 points for each question.\nIf you answer incorrectly, you will lose 5 points for each question.");
+
         Scanner scanner = new Scanner(System.in);
-        Map<String, String> questionsAnswers = new HashMap<String, String>();
-        List<String> answerList = new ArrayList<>();
+        Map<String, String> questionsAnswers = new HashMap<>();
         questionsAnswers.put("What is the longest river in the world?\nAnswer:", "nile");
         questionsAnswers.put("What is the biggest planet in our solar system?\nAnswer:", "jupiter");
         questionsAnswers.put("What is the largest organ in the human body?\nAnswer:", "skin");
@@ -17,25 +17,18 @@ public class TriviaGame {
         questionsAnswers.put("Who invented telephone?\nAnswer:", "graham bell");
         questionsAnswers.put("What is the unit of electric?\nAnswer:", "watt");
 
-        for (String i : questionsAnswers.keySet()) {
-            System.out.println(i);
-            String answers = scanner.nextLine().toLowerCase();
-            answerList.add(answers);
-        }
+        int totalPoints = questionsAnswers.size() * 10;
 
-        int point = 0;
-        point = questionsAnswers.entrySet().stream()
-                .mapToInt(entry -> answerList.contains(entry.getValue()) && answerList.contains(entry.getKey()) ? 10 : -5)
+        int userScore = questionsAnswers.entrySet().stream()
+                .mapToInt(entry -> {
+                    System.out.println(entry.getKey());
+                    String userAnswer = scanner.nextLine().toLowerCase();
+                    return userAnswer.equals(entry.getValue().toLowerCase()) ? 10 : -5;
+                })
                 .sum();
-        /*
-        if(point<0){
-            System.out.println("Your point is: 0");
-        }
-        else{
-            System.out.println("Congrats! Your score is: "+point);
-        }
-         */
-        point = Math.max(point,0);
-        System.out.println("Congrats! Your score is: "+point);
+
+        int finalScore = Math.max(0, userScore);
+
+        System.out.println("Your final score: " + finalScore + " out of " + totalPoints);
     }
 }
